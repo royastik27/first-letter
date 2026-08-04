@@ -3,5 +3,13 @@
 
 ### Check Issues
 
-1. Integer overflow at ans in sol.cpp.
-2. Memory overflow.
+- [ ] Integer overflow at ans in sol.cpp.
+- [ ] Memory overflow.
+
+### TODO
+
+- [x] Battle test.
+- [ ] Define constraints.
+- [ ] Write statement.
+- [ ] Add test cases.
+- [ ] Ship!
