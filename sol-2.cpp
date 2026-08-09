@@ -6,7 +6,7 @@
 
 using namespace std;
 
-#define LIM 100
+#define LIM 1000
 
 class Solution {
 	int n, m, hori[LIM][LIM];
@@ -77,6 +77,8 @@ public:
 };
 
 int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 
 	Solution sol;
 	int TC;

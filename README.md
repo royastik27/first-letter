@@ -4,12 +4,12 @@
 ### Check Issues
 
 - [ ] Integer overflow at ans in sol.cpp.
-- [ ] Memory overflow.
+- [ ] Memory overflow (use dynamic array?).
 
 ### TODO
 
 - [x] Battle test.
-- [ ] Define constraints.
-- [ ] Write statement.
+- [x] Define constraints.
+- [x] Write statement.
 - [ ] Add test cases.
 - [ ] Ship!

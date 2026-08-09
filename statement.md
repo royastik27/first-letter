@@ -5,18 +5,21 @@ SPACE LIMIT: 256 MB
 
 Do you know what **CPU** stands for? It's *Central Processing Unit*. But our programming club is also named **CPU**! Here it stands for *Competitive Programmers' Union*. Perfect match, right? The first letter here is **C**, which is your headache for this problem.
 
-In this problem, you are given a grid with points and empty cells. You have to find the total number of **C**s that can be formed from the grid.
-
-The grid consists of a period (.) which denotes an empty cell and the lowercase English letter 'c' which denotes a point. A **maximum** continuous sequence of 'c' vertically or horizontally denotes a line. A C is formed by two same length horizontal lines from two different rows and a vertical line connecting two leftmost ends of the horizontal lines. For example,
+In this problem, you are given a grid consisting of rows and columns. Each cell in the grid is either a period (.) which denotes an empty cell or the lowercase English letter 'c' which denotes a point. A **maximum** continuous sequence of 'c' vertically or horizontally denotes a line. A C is formed by two same length horizontal lines and a vertical line connecting two left ends of the horizontal lines. For example,
 
 ```
-	Valid C    Invalid C
+Valid C   Invalid C     Invalid C
+
+cccc			cccccc        c
+c					c             cccccc
+c					c             c
+cccc			cccc          cccccc
 
 ```
 
-A line cannot be considered partially to form any C. All lines of a C must be of length at least 2.
+A line cannot be considered partially to form any C. All lines of a C must be at least 2 characters long. You have to find the total number of **C**s that can be formed from the grid.
 
-Prove that you are yourself a *Napa Extra*, so a problem like this is not a headache to you ;)
+Prove that you are yourself a *Napa Extra*, so a problem like this is no headache to you ;)
 
 ## Input
 
@@ -33,72 +36,15 @@ Each input file contains multiple test cases. The first line contains the number
 
 The first line of each test case contains two integers n and m (1 <= n, m <= 10^5). This is followed by n lines, each containing exactly m characters consisting only period (.) and the lowercase English letter 'c'.
 
-Sum of $(n x m)$ over all test cases in an input file does not exceed $10^5$
+Sum of $(n x m)$ over all test cases in an input file does not exceed $10^7$
 
 **Constraints:**
-- $1 <= T <= 10^4$
-- $1 <= N, M <= 10^5$
-- Sum of $(N x M)$ over all cases in a test case does not exceed $10^5$
+- $1 <= t, n, m <= 10^3$
+- Sum of $(n x m)$ over all test cases in an input file does not exceed $10^7$
 
 ## Output
 
 Output $t$ lines, where each line contains the answer of the t-th test case.
-
-## Explanation for case-0
-
-### Case 1
-Obviously, only one C can be formed.
-
-### Case 2
-All three Cs are shown below.
-
-```
-One:
-ccccccc
-c......
-c......
-c......
-ccccccc
-
-Two:
-ccccccc
-c......
-ccccccc
-.......
-.......
-
-Three:
-.......
-.......
-ccccccc
-c......
-ccccccc
-```
-
-### Case 3
-Both Cs are shown below.
-
-```
-One:
-...cccccc...
-...c........
-...c........
-...c........
-...c........
-...c........
-...c........
-...cccccc...
-
-Two:
-............
-............
-ccccccccc...
-c...........
-c...........
-ccccccccc...
-............
-............
-```
 
 ### LINES TO ADD
 
