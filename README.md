@@ -1,15 +1,17 @@
 ## first-letter
 *by royastik27*
 
-### Check Issues
-
-- [ ] Integer overflow at ans in sol.cpp.
-- [ ] Memory overflow (use dynamic array?).
-
 ### TODO
 
 - [x] Battle test.
 - [x] Define constraints.
 - [x] Write statement.
-- [ ] Add test cases.
-- [ ] Ship!
+- [x] Add test cases.
+- [x] Ship!
+
+### Check Issues
+
+- [x] Integer overflow at ans in sol.cpp.
+- [x] Memory overflow (use dynamic array?).
+
+Thanks [@nafijimtiaz](https://github.com/nafijimtiaz) for testing.

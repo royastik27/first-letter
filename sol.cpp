@@ -3,20 +3,18 @@
 **/
 
 #include <iostream>
-#include <map>
 
 using namespace std;
 
-#define LIM 100
+#define LIM 1000
 
 class Solution {
 	int n, m, hori[LIM][LIM];
 	char a[LIM][LIM];
-	map <int, int> mp;
 
-	inline bool isPoint(char c) { return c == 'c'; }
-	inline bool isLineStart(int i, int j) {
-		return (hori[i][j] > j) && (j == 0 || hori[i][j-1] == -1);
+	inline bool isPoint(int i, int j) { return a[i][j] == 'c'; }
+	inline bool isHorizontalLineStart(int i, int j) {
+		return (isPoint(i, j) && hori[i][j] > j && (j == 0 || !isPoint(i, j-1)));
 	}
 public:
 	void solve() {
@@ -26,36 +24,51 @@ public:
 			for(int j = 0; j < m; ++j)
 				cin >> a[i][j];
 
-		// HORIZONTAL LINE END
+		// HORIZONTAL LINE ENDS
 		for(int i = 0; i < n; ++i) { // for each row (top -> bottom)
 			// last column
-			hori[i][m-1] = isPoint(a[i][m-1]) ? m-1 : -1;
+			hori[i][m-1] = isPoint(i, m-1) ? m-1 : -1;
 
 			// rest of the columns
 			for(int j = m-2; j >= 0; --j) {
-				if(isPoint(a[i][j]))
-					hori[i][j] = isPoint(a[i][j+1]) ? hori[i][j+1] : j;
+				if(isPoint(i, j))
+					hori[i][j] = isPoint(i, j+1) ? hori[i][j+1] : j;
 				else
 					hori[i][j] = -1;
 			}
 		}
 
-		// VERTICAL PROCESSING
-		int ans = 0;
+		// PROCESSING VERTICAL LINES
+		int ans = 0, lineStartRow;
 
-		for(int j = m-1; j >= 0; --j) { // for each col (right -> left)
-			mp.clear();
-			for(int i = 0; i < n; ++i) {
-				if(isPoint(a[i][j])) {
-					// if there is a line
-					if(isLineStart(i, j)) {
-						int lineEndIdx = hori[i][j];
+		for(int j = 0; j < m; ++j) { // for each col (left -> right)
 
-						ans += mp[lineEndIdx];
-						++mp[lineEndIdx];
+			lineStartRow = -1;
+
+			for(int i = 0; i < n; ++i) { // for each row
+				if(isPoint(i, j)) {
+					// Case 1: Line start -> store start row index
+					// Case 2: Line end -> process
+					// Case 3: Line middle -> keep line start row index
+
+					// MUST BE IF...ELSE IF, otherwise the start point of a separate horizontal line will be considered as both start and end
+					// Case 1: Line start
+					if(i == 0 || !isPoint(i-1, j)) {
+						lineStartRow = i;
 					}
+					// Case 2: Line end
+					else if(i == n-1 || !isPoint(i+1, j)) {
+						// both ends have same length valid horizontal lines
+						// if(hori[i][j] == hori[lineStartRow][j] && hori[i][j] > j)
+						if(isHorizontalLineStart(i, j) && isHorizontalLineStart(lineStartRow, j) && hori[i][j] == hori[lineStartRow][j])
+							++ans;
+					}
+					// else Case 3: Line middle -> keep the value of lineStartRow
 				}
-				else mp.clear();
+				else {
+					// cleanup
+					lineStartRow = -1;
+				}
 			}
 		}
 
@@ -64,6 +77,8 @@ public:
 };
 
 int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 
 	Solution sol;
 	int TC;
